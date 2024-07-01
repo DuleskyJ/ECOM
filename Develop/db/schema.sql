@@ -19,7 +19,7 @@ CREATE TABLE product (
   price DECIMAL(10, 2) NOT NULL,
   stock INT DEFAULT 10 NOT NULL,
   category_id INT,
-  FOREIGN KEY (category_id) REFERENCES category(id)
+  FOREIGN KEY (category_id) REFERENCES category(id) ON DELETE CASCADE
 );
 
 CREATE TABLE tag (
@@ -32,6 +32,6 @@ CREATE TABLE product_tag (
   product_id INT,
   tag_id INT,
   UNIQUE KEY (product_id, tag_id),
-  FOREIGN KEY (product_id) REFERENCES product(id),
-  FOREIGN KEY (tag_id) REFERENCES tag(id)
+  FOREIGN KEY (product_id) REFERENCES product(id) ON DELETE CASCADE,
+  FOREIGN KEY (tag_id) REFERENCES tag(id) ON DELETE CASCADE
 );
