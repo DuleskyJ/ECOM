@@ -33,9 +33,7 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const categoryData = await Category.create({
-      category_name: req.body.category_name
-    });
+    const categoryData = await Category.create(req.body);
     res.status(200).json(categoryData);
   } catch (err) {
     res.status(400).json(err);
@@ -61,8 +59,17 @@ router.put('/:id', async (req, res) => {
   }
 });
 
+// Updated DELETE route handler
 router.delete('/:id', async (req, res) => {
   try {
+    // Delete associated products first
+    await Product.destroy({
+      where: {
+        category_id: req.params.id,
+      },
+    });
+
+    // Then delete the category
     const categoryData = await Category.destroy({
       where: {
         id: req.params.id,
