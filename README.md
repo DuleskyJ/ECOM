@@ -42,7 +42,7 @@ DELETE /api/products/:id - Delete a product by ID.
 DELETE /api/tags/:id - Delete a tag by ID.
 
 ## Walkthrough Video
-Link to the walkthrough video
+https://www.loom.com/share/9ee9cae6f8304471bbdb7c41e7d8178d?sid=45a045be-771f-4e08-bd74-33146ef61077
 
 ## License
 This project is licensed under the MIT License.
